@@ -8,7 +8,7 @@ import missingno as msno
 
 # 📄 Configure page
 st.set_page_config(page_title="EDA App", layout="wide")
-st.title("📊 Automated EDA Web App")
+st.title("📊 Automated EDA Web App Create By SingaReddy")
 
 # 📤 Upload CSV
 uploaded_file = st.file_uploader("Upload your CSV file", type=["csv"])
