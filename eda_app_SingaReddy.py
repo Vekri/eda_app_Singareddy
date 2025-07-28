@@ -10,12 +10,15 @@ import missingno as msno
 st.set_page_config(page_title="EDA App", layout="wide")
 st.title("📊 Automated EDA Web App Created By SingaReddy")
 
-# 📤 Upload CSV
-uploaded_file = st.file_uploader("Upload your CSV file", type=["csv"])
+# 📤 Upload CSV or Excel
+uploaded_file = st.file_uploader("Upload your CSV or Excel file", type=["csv", "xlsx"])
 
 if uploaded_file is not None:
     try:
-        df = pd.read_csv(uploaded_file)
+        if uploaded_file.name.endswith('.csv'):
+            df = pd.read_csv(uploaded_file)
+        elif uploaded_file.name.endswith('.xlsx'):
+            df = pd.read_excel(uploaded_file)
         st.success("✅ File uploaded successfully!")
     except Exception as e:
         st.error(f"❌ Error reading file: {e}")
@@ -98,4 +101,4 @@ if uploaded_file is not None:
     st.success("✅ EDA Completed!")
 
 else:
-    st.info("📤 Please upload a CSV file to begin.")
+    st.info("📤 Please upload a CSV or Excel file to begin.")
